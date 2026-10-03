@@ -1,0 +1,243 @@
+<title>Projeto Eu Asso pra Ti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400..600&display=swap">
+<style>
+  :root{
+    --ground:#EDEEF1; --surface:#FFFFFF; --surface-2:#F6F7F9;
+    --ink:#15161B; --ink-muted:#63656F; --ink-faint:#8B8D97;
+    --line:#DCDEE4; --line-soft:#E7E9ED;
+    --ember:#C33A16; --ember-soft:#FAEBE5;
+    --teal:#0E5457; --teal-soft:#E2EFEF;
+    --shadow:0 1px 2px rgba(21,22,27,.05), 0 8px 24px rgba(21,22,27,.05);
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      color-scheme:dark;
+      --ground:#111216; --surface:#191B20; --surface-2:#202329;
+      --ink:#EEEFF2; --ink-muted:#9EA1AC; --ink-faint:#74777F;
+      --line:#2C2F37; --line-soft:#242730;
+      --ember:#FF7A4D; --ember-soft:#2B1811;
+      --teal:#5CBFC2; --teal-soft:#0F262A;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --ground:#111216; --surface:#191B20; --surface-2:#202329;
+    --ink:#EEEFF2; --ink-muted:#9EA1AC; --ink-faint:#74777F;
+    --line:#2C2F37; --line-soft:#242730;
+    --ember:#FF7A4D; --ember-soft:#2B1811;
+    --teal:#5CBFC2; --teal-soft:#0F262A;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  body{background:var(--ground);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:17.5px;line-height:1.62;margin:0;padding-inline:20px;padding-block:0 96px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto}
+  h1,h2,h3,h4{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;font-variation-settings:"wdth" 110;text-wrap:balance;margin:0}
+  header{padding:60px 0 34px;border-bottom:1px solid var(--line)}
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ember);margin-bottom:22px}
+  h1{font-size:clamp(34px,5.6vw,56px);font-weight:700;line-height:1.04;letter-spacing:-.022em}
+  h1 .hot{color:var(--ember)}
+  .lede{color:var(--ink-muted);font-size:clamp(18px,2.2vw,20.5px);max-width:60ch;margin:16px 0 0}
+  .meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 22px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-faint)}
+  nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:8px;overflow-x:auto}
+  nav a{flex:none;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--surface);padding:7px 12px}
+  nav a:hover,nav a:focus-visible{border-color:var(--ember);color:var(--ember);outline:none}
+  section{padding:52px 0 0;scroll-margin-top:60px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ember);flex:none}
+  h2{font-size:clamp(24px,3.2vw,31px);font-weight:600;letter-spacing:-.017em}
+  .sec-sub{color:var(--ink-muted);margin:10px 0 22px;max-width:62ch}
+  p{margin:0 0 16px}
+  .statement{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--ember);padding:26px 28px;box-shadow:var(--shadow)}
+  .statement p{font-family:Archivo,sans-serif;font-variation-settings:"wdth" 104;font-size:clamp(19px,2.4vw,23px);font-weight:600;line-height:1.32;letter-spacing:-.012em;margin:0}
+  .statement .hot{color:var(--ember)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:18px 0}
+  .card{background:var(--surface);border:1px solid var(--line);padding:22px 22px 18px}
+  .card .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:10px}
+  .card h4{font-size:17px;font-weight:600;margin:0 0 8px}
+  .card p{font-size:15.5px;color:var(--ink-muted);margin:0}
+  .card.pick{border-color:var(--ember)} .card.pick .eyebrow{color:var(--ember)}
+  .ladder{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--line);background:var(--surface)}
+  .rung{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line-soft)}
+  .rung:last-child{border-bottom:0}
+  .rung .k{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-faint);padding-top:3px}
+  .rung.us{background:var(--ember-soft)} .rung.us .k{color:var(--ember);font-weight:600}
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{padding:0 0 0 22px;position:relative;margin-bottom:10px}
+  ul.clean li::before{content:"";position:absolute;left:0;top:.66em;width:7px;height:7px;background:var(--ember)}
+  ul.clean.cool li::before{background:var(--teal)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 0}
+  .chip{font-family:"IBM Plex Mono",monospace;font-size:12.5px;border:1px solid var(--line);background:var(--surface);padding:6px 11px;text-decoration:line-through;color:var(--ink-muted)}
+  .phone{max-width:380px;background:var(--surface);border:1px solid var(--line);padding:20px 22px;box-shadow:var(--shadow)}
+  .phone .name{font-family:Archivo,sans-serif;font-weight:600;font-size:15.5px}
+  .phone .bio{font-family:Archivo,sans-serif;font-variation-settings:"wdth" 100;font-size:14.5px;line-height:1.5;white-space:pre-line;margin-top:6px}
+  .phone .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-faint);margin-bottom:10px;display:block}
+  .copy{margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:12px;border:1px solid var(--ember);color:var(--ember);background:transparent;padding:8px 12px;cursor:pointer}
+  .copy:hover,.copy:focus-visible{background:var(--ember);color:var(--surface);outline:none}
+  .copy.ok{background:var(--teal);border-color:var(--teal);color:var(--surface)}
+  .weeks{display:grid;gap:10px}
+  .week{display:grid;grid-template-columns:120px 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);padding:16px 20px}
+  .week .when{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ember);font-weight:600;line-height:1.5}
+  .week .when span{display:block;color:var(--ink-faint);font-weight:400}
+  .week h4{font-size:16px;font-weight:600;margin:0 0 6px}
+  .week p{font-size:15px;color:var(--ink-muted);margin:0}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:18px 0}
+  .stat{background:var(--surface);border:1px solid var(--line);padding:16px 18px}
+  .stat .v{font-family:Archivo,sans-serif;font-size:28px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .stat .l{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-faint);margin-top:2px}
+  .links{display:grid;gap:10px}
+  .link{display:flex;justify-content:space-between;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);padding:15px 18px;text-decoration:none;color:var(--ink)}
+  .link:hover,.link:focus-visible{border-color:var(--ember);outline:none}
+  .link strong{font-family:Archivo,sans-serif;font-weight:600;font-size:16px;display:block}
+  .link small{color:var(--ink-muted);font-size:14px}
+  .link .go{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ember);flex:none}
+  .link.soon{opacity:.6;pointer-events:none}
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:22px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-faint);line-height:1.75}
+  @media (max-width:620px){ body{font-size:16.5px;padding-inline:16px} .rung,.week{grid-template-columns:1fr;gap:4px} }
+</style>
+
+<div class="wrap">
+<header>
+  <div class="kicker">Projeto de reposicionamento · 1º/10 a 14/11/2026</div>
+  <h1>Eu Asso pra Ti.<br><span class="hot">Tudo do projeto num lugar só.</span></h1>
+  <p class="lead lede">O posicionamento, o que muda no perfil, o cronograma dos 45 dias e os links de tudo que a gente vai produzindo. Este link é o mesmo do começo ao fim: quando algo novo ficar pronto, aparece aqui.</p>
+  <div class="meta"><span>Diego Rocha · Eu Asso pra Ti</span><span>Fabricio Kaempf · Estrategista Digital</span><span>@fabriciokaempf</span></div>
+</header>
+
+<nav aria-label="Seções">
+  <a href="#posicionamento">Posicionamento</a>
+  <a href="#perfil">Perfil</a>
+  <a href="#conteudo">Conteúdo</a>
+  <a href="#cronograma">Cronograma</a>
+  <a href="#partida">Ponto de partida</a>
+  <a href="#links">Links</a>
+</nav>
+
+<section id="posicionamento" style="padding-top:42px">
+  <div class="sec-head"><span class="sec-num">01</span><h2>Posicionamento</h2></div>
+  <p class="sec-sub">A base de tudo: a bio, a frase do logo, a proposta e os posts saem daqui.</p>
+
+  <div class="statement"><p>O Eu Asso pra Ti é o churrasco para eventos de até 50 pessoas em que o Diego <span class="hot">escolhe e compra a carne</span>, monta o cardápio numa conversa com quem organiza a festa e fica na churrasqueira do início ao fim. A assinatura da casa é o <span class="hot">choripan de focaccia</span>.</p></div>
+
+  <h3 style="font-size:19px;margin:34px 0 12px">Onde a gente joga</h3>
+  <div class="ladder">
+    <div class="rung"><span class="k">No topo</span><span>Referências do estado, com cardápio fechado e preço de outro patamar.</span></div>
+    <div class="rung us"><span class="k">Eu Asso pra Ti</span><span><strong>Churrasco autoral de evento pequeno.</strong> Na casa do cliente, com o cardápio nascendo da conversa, a carne escolhida pelo Diego e uma receita que ninguém mais tem.</span></div>
+    <div class="rung"><span class="k">Na base</span><span>O churrasqueiro a domicílio, que muitas vezes só assa a carne que o cliente comprou.</span></div>
+  </div>
+
+  <h3 style="font-size:19px;margin:34px 0 12px">Para quem a gente fala</h3>
+  <div class="grid">
+    <div class="card"><span class="eyebrow">Quem contrata</span><h4>Quem organiza a festa</h4><p>Na maioria das vezes, é a mulher que faz o primeiro contato e depois leva a decisão pra casa. A comunicação fala com ela.</p></div>
+    <div class="card"><span class="eyebrow">Ocasiões</span><h4>Festa pequena e importante</h4><p>Aniversários, encontros de família e confraternizações, de preferência em casa, para umas 20 pessoas.</p></div>
+    <div class="card"><span class="eyebrow">Como chega</span><h4>Indicação e convidados</h4><p>Quem comeu o churrasco passa o contato adiante. O Instagram é onde essa pessoa confere antes de chamar.</p></div>
+  </div>
+
+  <h3 style="font-size:19px;margin:34px 0 12px">A diferença</h3>
+  <div class="grid">
+    <div class="card"><span class="eyebrow">Para quem só assa</span><h4>Cuida de tudo</h4><p>Escolhe e compra a carne, monta o cardápio do evento, chega antes com cronograma e checklist. Ninguém da festa fica na churrasqueira.</p></div>
+    <div class="card"><span class="eyebrow">Para quem está no topo</span><h4>Mais perto</h4><p>Na casa do cliente, com o cardápio montado na conversa, não num catálogo.</p></div>
+    <div class="card pick"><span class="eyebrow">O que só ele tem</span><h4>O choripan de focaccia</h4><p>Receita dele. E a reação da galera quando prova, que é o melhor momento do evento.</p></div>
+  </div>
+
+  <h3 style="font-size:19px;margin:34px 0 10px">Palavras que a gente deixa de lado</h3>
+  <p style="color:var(--ink-muted);font-size:15.5px;max-width:62ch">As quatro primeiras já são usadas por outros da região. As duas últimas vão contra o que o Eu Asso pra Ti defende.</p>
+  <div class="chips"><span class="chip">experiência</span><span class="chip">premium</span><span class="chip">prime</span><span class="chip">"na brasa"</span><span class="chip">"do teu jeito"</span><span class="chip">"assar uma carne"</span></div>
+
+  <h3 style="font-size:19px;margin:34px 0 12px">A frase do logo: escolha do Diego</h3>
+  <div class="grid">
+    <div class="card pick"><span class="eyebrow">Opção 1 · a mais segura</span><h4>Da compra ao último corte.</h4><p>Verdade literal e completa o nome: "Eu asso pra ti, da compra ao último corte".</p></div>
+    <div class="card"><span class="eyebrow">Opção 2 · a do diferencial</span><h4>Antes do fogo, a gente conversa.</h4><p>Fala da conversa, que é o que faz o cliente fechar.</p></div>
+    <div class="card"><span class="eyebrow">Opção 3</span><h4>Só o nome</h4><p>Tirar a frase e deixar o logo com "Eu Asso pra Ti", que já fala tudo.</p></div>
+  </div>
+  <p style="color:var(--ink-muted);font-size:15px">As duas frases foram pesquisadas: nenhum churrasco ou buffet do Brasil usa nenhuma delas.</p>
+</section>
+
+<section id="perfil">
+  <div class="sec-head"><span class="sec-num">02</span><h2>O que muda no perfil</h2></div>
+  <p class="sec-sub">Quando o Diego aprovar, ele cola no app em Editar perfil. O @ continua o mesmo.</p>
+  <div class="phone">
+    <span class="tag">@eu_assoprati</span>
+    <div class="name" id="nome">Eu Asso pra Ti | Churrasco para Eventos</div>
+    <div class="bio" id="bio">Churrasco para eventos em NH, POA e litoral
+Carne escolhida por mim, cardápio montado contigo
+Casa do choripan de focaccia 🔥
+👇 Orçamento no WhatsApp</div>
+    <button class="copy" type="button" data-target="nome">Copiar nome</button>
+    <button class="copy" type="button" data-target="bio">Copiar bio</button>
+  </div>
+</section>
+
+<section id="conteudo">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Os 18 posts</h2></div>
+  <p class="sec-sub">Uns três por semana, a partir da semana 2, com as fotos reais dos eventos. Reels e carrosséis primeiro, marcando os parceiros de cada evento.</p>
+  <div class="grid">
+    <div class="card"><span class="eyebrow">Cerca de 6 posts</span><h4>O evento de verdade</h4><p>Bastidor, montagem e a festa acontecendo.</p></div>
+    <div class="card"><span class="eyebrow">Cerca de 4 posts</span><h4>A assinatura</h4><p>O choripan de focaccia e os cortes, com o vídeo da reação da galera.</p></div>
+    <div class="card"><span class="eyebrow">Cerca de 4 posts</span><h4>Como funciona</h4><p>Da compra da carne ao último corte: a conversa, o cronograma e o cuidado.</p></div>
+    <div class="card"><span class="eyebrow">Cerca de 4 posts</span><h4>Quem já fez</h4><p>Feedbacks e avaliações dos clientes, sempre com autorização.</p></div>
+  </div>
+</section>
+
+<section id="cronograma">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Cronograma dos 45 dias</h2></div>
+  <p class="sec-sub">O que é do Fabricio e o que é do Diego em cada semana. Se algo do Diego atrasar, o projeto atrasa junto.</p>
+  <div class="weeks">
+    <div class="week"><div class="when">Semana 1<span>1º a 7/10</span></div><div><h4>Base</h4><p><strong>Fabricio:</strong> raio-x do perfil (feito), posicionamento (feito). <strong>Diego:</strong> acesso (feito), Perfil da Empresa no Google com o vídeo de verificação, fotos no Drive, arquivo do logo, as três referências e a lista dos últimos clientes. 1ª parcela em 5/10.</p></div></div>
+    <div class="week"><div class="when">Semana 2<span>8 a 14/10</span></div><div><h4>Posicionamento no ar</h4><p><strong>Fabricio:</strong> frase do logo, nome e bio, roteiro do vídeo da focaccia, primeiros 3 posts. <strong>Diego:</strong> aprovar o posicionamento, escolher a frase e uma hora de conversa sobre como monta as propostas. 10% sobre os fechamentos a partir de 10/10.</p></div></div>
+    <div class="week"><div class="when">Semana 3<span>15 a 21/10</span></div><div><h4>O que pesa na temporada fica pronto</h4><p><strong>Fabricio:</strong> logo ajustado, os três níveis e o modelo da proposta, Google completo, scripts de venda, 3 posts. <strong>Diego:</strong> adicionar o Fabricio no Google e começar a usar a proposta nova.</p></div></div>
+    <div class="week"><div class="when">Semana 4<span>22 a 28/10</span></div><div><h4>Clientes antigos e prova</h4><p><strong>Fabricio:</strong> textos do aviso de preço novo e do pedido de avaliação, 3 posts. <strong>Diego:</strong> mandar os textos, um cliente por vez.</p></div></div>
+    <div class="week"><div class="when">Semana 5<span>29/10 a 4/11</span></div><div><h4>Primeira conta</h4><p>Conta dos 10% de outubro, vídeo da focaccia se tiver evento com ela, 3 posts.</p></div></div>
+    <div class="week"><div class="when">Semana 6<span>5 a 11/11</span></div><div><h4>Fase 2</h4><p>2ª parcela em 5/11. Apresentação da fase 2 de três meses na alta temporada. 3 posts.</p></div></div>
+    <div class="week"><div class="when">Reta final<span>12 a 14/11</span></div><div><h4>Fechamento</h4><p>Últimos 3 posts e a comparação com o ponto de partida.</p></div></div>
+  </div>
+</section>
+
+<section id="partida">
+  <div class="sec-head"><span class="sec-num">05</span><h2>Ponto de partida</h2></div>
+  <p class="sec-sub">Como o Instagram estava em 1º/10, pelo Meta Business Suite. É com isso que a gente compara no fim.</p>
+  <div class="stats">
+    <div class="stat"><div class="v">1.803</div><div class="l">seguidores</div></div>
+    <div class="stat"><div class="v">6</div><div class="l">posts no feed em 90 dias</div></div>
+    <div class="stat"><div class="v">1,6 mil</div><div class="l">contas alcançadas em setembro</div></div>
+    <div class="stat"><div class="v">844</div><div class="l">alcance do melhor post (reel com a escola)</div></div>
+  </div>
+  <ul class="clean cool">
+    <li>Quem segue está mais em Novo Hamburgo e Porto Alegre (19% cada), depois Canoas, Gravataí, São Leopoldo e o litoral.</li>
+    <li>A faixa mais forte é de 35 a 54 anos. Hoje há um pouco mais de homens (56%) do que de mulheres seguindo.</li>
+    <li>O post que mais alcançou foi um reel feito em colaboração, marcando o parceiro do evento. É um caminho para os próximos.</li>
+  </ul>
+</section>
+
+<section id="links">
+  <div class="sec-head"><span class="sec-num">06</span><h2>Links do projeto</h2></div>
+  <p class="sec-sub">Tudo que já existe. O que ainda está em produção aparece aqui quando ficar pronto.</p>
+  <div class="links">
+    <a class="link" href="https://drive.google.com/drive/folders/1uNZgwOCzoJkSdL8YgCnJK-aGDhYZTOTG" target="_blank" rel="noopener"><span><strong>Drive do projeto</strong><small>Fotos, vídeos, logo, referências, documentos e entregas</small></span><span class="go">Abrir</span></a>
+    <a class="link" href="https://claude.ai/artifact/RzEjwi17GoRXXfzuj2QCmh" target="_blank" rel="noopener"><span><strong>Proposta</strong><small>Enviada em 15/09</small></span><span class="go">Abrir</span></a>
+    <a class="link" href="https://claude.ai/artifact/3gXGeMscQfiQdSjtSvfRiR" target="_blank" rel="noopener"><span><strong>Documento de fechamento</strong><small>Com o "de acordo" de 1º/10</small></span><span class="go">Abrir</span></a>
+    <a class="link" href="https://docs.google.com/document/d/1jPBggKxEUdKDFGklN7YtRnsf7vgTE-x7Ts_MPk7xTm4/edit" target="_blank" rel="noopener"><span><strong>Passo a passo 1: acesso ao Instagram</strong><small>Feito</small></span><span class="go">Abrir</span></a>
+    <a class="link" href="https://docs.google.com/document/d/1JO2dSsiATZhHypecmAQCFhp_Eiy0dCkV9mBZ_SREzEs/edit" target="_blank" rel="noopener"><span><strong>Passo a passo 2: Perfil da Empresa no Google</strong><small>Próximo passo do Diego</small></span><span class="go">Abrir</span></a>
+    <div class="link soon"><span><strong>Scripts de venda</strong><small>Em produção, semana 3</small></span><span class="go">Em breve</span></div>
+    <div class="link soon"><span><strong>Modelo da proposta com três opções</strong><small>Em produção, semana 3</small></span><span class="go">Em breve</span></div>
+  </div>
+</section>
+
+<footer>
+  Fabricio Kaempf | Estrategista Digital · @fabriciokaempf<br>
+  Página do projeto Eu Asso pra Ti, atualizada em 1º/10/2026.
+</footer>
+</div>
+
+<script>
+document.addEventListener('click', e => {
+  const b = e.target.closest('.copy'); if (!b) return;
+  const el = document.getElementById(b.dataset.target); const text = el.innerText.trim();
+  const label = b.textContent;
+  const done = () => { b.textContent = 'Copiado'; b.classList.add('ok'); setTimeout(() => { b.textContent = label; b.classList.remove('ok'); }, 1800); };
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  try { navigator.clipboard.writeText(text).then(done, fallback); } catch(_) { fallback(); }
+});
+</script>
