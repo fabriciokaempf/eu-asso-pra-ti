@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eu Asso pra Ti no Feed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500&display=swap">
+<style>
+:root{--bg:#150F0B;--panel:#1F1712;--panel2:#261C15;--line:#3A2C21;--fg:#F3E7D3;--body:#D6C9B6;--muted:#968470;--bronze:#CE9E5E;--ok:#8DB07A;
+--display:"Oswald","Arial Narrow",sans-serif;--label:"Barlow Condensed","Arial Narrow",sans-serif;--text:"Barlow",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--body);font:400 1.0625rem/1.6 var(--text)}
+.hero{position:relative;min-height:min(78vh,620px);display:grid;align-items:end;background:#000 url(img/p5-02.jpg) center 40%/cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,15,11,.2) 0%,rgba(21,15,11,.55) 45%,var(--bg) 100%)}
+.hero .in{position:relative;z-index:1;max-width:760px;margin:0 auto;width:100%;padding:0 20px 36px}
+h1,h2{font-family:var(--display);font-weight:600;text-transform:uppercase;color:var(--fg);line-height:1.05;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.4rem,9vw,4rem)} h1 span{color:var(--bronze);display:block}
+h2{font-size:clamp(1.6rem,5vw,2.1rem)}
+.k{font:600 .85rem var(--label);letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);margin:0 0 10px}
+.lead{margin:16px 0 0;max-width:56ch;color:var(--fg);font-size:1.1rem}
+.wrap{max-width:760px;margin:0 auto;padding:8px 20px 64px;display:grid;gap:64px}
+p{margin:0;max-width:62ch}
+b{color:var(--fg)}
+section{display:grid;gap:18px}
+.week{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.day{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:6px}
+.day b{font:600 1.05rem var(--display);text-transform:uppercase}
+.day small{font:500 .9rem var(--label);letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.day.now{border-color:var(--bronze);background:var(--panel2)}
+.tag{justify-self:start;font:600 .78rem var(--label);letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--fg)}
+.tag.on{background:var(--bronze);border-color:var(--bronze);color:var(--bg)}
+.tag.done{border-color:var(--ok);color:var(--ok)}
+.changes{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.changes li{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.changes li::before{content:"";width:9px;height:9px;margin:9px 0 0 6px;background:var(--bronze);transform:rotate(45deg)}
+.post-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.car{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px 10px;margin-inline:-20px}
+.car img{width:min(78%,330px);flex:none;scroll-snap-align:start;border-radius:8px;aspect-ratio:4/5;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.hint{font:500 .9rem var(--label);color:var(--muted);letter-spacing:.05em}
+details{background:var(--panel);border:1px solid var(--line);border-radius:10px}
+summary{cursor:pointer;padding:14px 18px;font:600 .95rem var(--label);letter-spacing:.12em;text-transform:uppercase;color:var(--bronze)}
+.cap{padding:0 18px 18px;white-space:pre-line;font-size:1rem}
+.vid{width:min(100%,340px);aspect-ratio:9/16;border-radius:10px;background:#000;display:block}
+.deal{border-left:3px solid var(--bronze);padding:6px 0 6px 18px;display:grid;gap:10px}
+footer{font:500 .9rem var(--label);color:var(--muted);letter-spacing:.06em;border-top:1px solid var(--line);padding-top:18px}
+@media (max-width:560px){.week{grid-template-columns:1fr}}
+</style>
+
+<header class="hero"><div class="in">
+  <p class="k">Eu Asso pra Ti · semana de 13 a 17/10</p>
+  <h1>Pegada premium<span>no teu feed.</span></h1>
+  <p class="lead">Diego, ouvi teus áudios e fui além: os posts da semana agora mostram só corte nobre e serviço de alto padrão, com as fotos da praia.</p>
+</div></header>
+
+<div class="wrap">
+
+<section>
+  <p class="k">A semana</p>
+  <div class="week">
+    <div class="day"><small>Terça 13/10</small><b>Reels do fogo</b><span class="tag done">No ar</span></div>
+    <div class="day now"><small>Quinta 15/10 · 21h</small><b>Gastronomia de fogo</b><span class="tag on">Hoje</span></div>
+    <div class="day"><small>Sábado 17/10 · 21h</small><b>A tua festa, do teu jeito</b><span class="tag">Programado</span></div>
+  </div>
+</section>
+
+<section>
+  <p class="k">O que mudou</p>
+  <h2>Do teu jeito, e mais premium</h2>
+  <ul class="changes">
+    <li><span><b>Só corte nobre.</b> Saíram as fotos do evento da escola. Entrou carne de perto, com marmoreio, e tu fatiando na capa.</span></li>
+    <li><span><b>"Gastronomia de fogo" grande na capa,</b> com o "Eu cuido do fogo. Tu aproveita a festa." junto, como tu pediu.</span></li>
+    <li><span><b>"Não abrimos mão do alto padrão de qualidade."</b> Sem falar em fornecedor.</span></li>
+    <li><span><b>A sobremesa do teu jeito:</b> abacaxi com canela, banana assada, queijo coalho com doce de leite e Martín Fierro, com a foto do abacaxi na brasa.</span></li>
+    <li><span><b>Tu na capa,</b> sorrindo e fatiando, com "Gastronomia de fogo" embaixo, sem cobrir o teu rosto.</span></li>
+  </ul>
+</section>
+
+<section>
+  <div class="post-head"><p class="k" style="margin:0">Hoje · quinta 15/10 · 21h</p><span class="tag on">Programado</span></div>
+  <h2>Post 5: gastronomia de fogo</h2>
+  <p>Carrossel de 7 imagens: a carne de qualidade, cada uma no seu ponto, os legumes, o fatiado na hora, a sobremesa no fogo e o convite pra conversar.</p>
+  <div class="car" aria-label="Imagens do post 5">
+    <img src="img/p5-01.jpg" alt="Capa: Gastronomia de fogo" loading="lazy">
+    <img src="img/p5-02.jpg" alt="Carne de qualidade" loading="lazy">
+    <img src="img/p5-03.jpg" alt="Cada carne no seu ponto" loading="lazy">
+    <img src="img/p5-04.jpg" alt="Os legumes também vão pro fogo" loading="lazy">
+    <img src="img/p5-05.jpg" alt="Fatiado na hora" loading="lazy">
+    <img src="img/p5-06.jpg" alt="E a sobremesa? No fogo, é claro" loading="lazy">
+    <img src="img/p5-07.jpg" alt="Tem festa vindo aí?" loading="lazy">
+  </div>
+  <p class="hint">Arrasta para o lado para ver as 7 imagens.</p>
+  <details><summary>Ver a legenda</summary><div class="cap">Gastronomia de fogo 🔥 Eu cuido do fogo, tu aproveita a festa.
+
+Tu acha que churrasco é só carne? Aqui não!
+
+🥩 Carne de qualidade: não abrimos mão do alto padrão de qualidade, e a galera já sente a diferença no primeiro pedaço.
+🥦 Os legumes também vão pro fogo e chegam na tábua. Quem não come carne também se delicia.
+🔪 Tudo fatiado na hora, com os garçons passando pra galera, quentinho.
+🍍 E a sobremesa? No fogo, é claro: abacaxi com canela, banana assada, queijo coalho com doce de leite, Martín Fierro... As opções são inúmeras, pra fechar a festa com gostinho de quero mais 😋
+
+Cada festa tem o seu cardápio, e ele a gente monta junto, numa conversa.
+
+Me chama no WhatsApp pelo link da bio ou no (51) 99565-7817 e me conta como tu imaginou a tua festa.
+
+📍 Região Metropolitana, Porto Alegre e Litoral
+
+#churrascograndepoa #churrascopoa #churrasconolitoral #churrascoparaeventos #churrasqueiroadomicilio</div></details>
+</section>
+
+<section>
+  <div class="post-head"><p class="k" style="margin:0">Sábado 17/10 · 21h</p><span class="tag">Programado</span></div>
+  <h2>Post 6: a tua festa, do teu jeito</h2>
+  <p>Aqui não tem cardápio pronto: aniversário em casa, confraternização, casamento e formatura, cada um com o seu jeito. Fecha com "me conta a tua festa".</p>
+  <div class="car" aria-label="Imagens do post 6">
+    <img src="img/p6-01.jpg" alt="Capa: A tua festa, do teu jeito" loading="lazy">
+    <img src="img/p6-02.jpg" alt="Pra família e os amigos" loading="lazy">
+    <img src="img/p6-03.jpg" alt="Pra galera da empresa" loading="lazy">
+    <img src="img/p6-04.jpg" alt="Pro dia que não volta" loading="lazy">
+    <img src="img/p6-05.jpg" alt="Nada de cardápio pronto" loading="lazy">
+    <img src="img/p6-06.jpg" alt="Me conta a tua festa" loading="lazy">
+  </div>
+  <p class="hint">Arrasta para o lado para ver as 6 imagens.</p>
+  <details><summary>Ver a legenda</summary><div class="cap">A tua festa, do teu jeito 🔥
+
+Aqui não tem cardápio pronto. Cada festa é diferente, e o cardápio também:
+
+🎂 Aniversário em casa: uns 20 convidados, a entradinha de focaccia circulando e a carne saindo picadinha, sem ninguém sair da conversa.
+🏢 Confraternização da empresa: cardápio pensado pra agradar todo mundo, garçons servindo e nota fiscal.
+💍 Casamento e formatura: cortes especiais, sobremesa no fogo e cronograma pra carne chegar na hora certa.
+
+Tu me conta a data, quantas pessoas e como tu imaginou. A gente monta o cardápio junto, com a tua cara.
+
+Me chama no WhatsApp pelo link da bio ou no (51) 99565-7817 e me conta a tua festa. O resto é comigo.
+
+📍 Região Metropolitana, Porto Alegre e Litoral
+
+#churrascograndepoa #churrascopoa #churrasconolitoral #churrascoparaeventos #churrasqueiroadomicilio</div></details>
+  <div class="deal"><p class="k" style="margin:0">Teus pitacos</p><p>Se alguma frase do post de sábado não tem a tua cara, me manda até amanhã, sexta, num áudio só.</p></div>
+</section>
+
+<section>
+  <div class="post-head"><p class="k" style="margin:0">Terça 13/10</p><span class="tag done">No ar</span></div>
+  <h2>Post 4: o primeiro Reels</h2>
+  <video class="vid" src="video/p4-reels.mp4" controls playsinline preload="metadata"></video>
+  <details><summary>Ver a legenda</summary><div class="cap">Quando tu chega, o fogo já tá pronto 🔥
+
+Eu chego bem antes pra preparar tudo: a carne de qualidade separada pra tua festa, o fogo no ponto certinho e tudo saindo da brasa direto pra tábua, servido quentinho pra galera.
+
+E tu? Tu só precisa aproveitar a festa com quem tu gosta. O resto é comigo.
+
+Que tal deixar o fogo comigo na tua próxima festa? Me chama no WhatsApp pelo link da bio ou no (51) 99565-7817 e me conta como tu imaginou a tua festa.
+
+🎥 @taiguara_filmes
+📍 Região Metropolitana, Porto Alegre e Litoral
+
+#churrascograndepoa #churrascopoa #churrasconolitoral #churrascoparaeventos #churrasqueiroadomicilio</div></details>
+</section>
+
+<section>
+  <p class="k">Combinado pra semana que vem</p>
+  <div class="deal">
+    <p>As fotos de cada post ficam definidas antes, sempre com corte premium, e tu dá os pitacos de texto com antecedência. Assim ninguém precisa refazer em cima da hora.</p>
+    <p>Já anotado pra um próximo post: <b>sal antes ou sal depois?</b></p>
+  </div>
+</section>
+
+<footer>Fabricio Kaempf · Estrategista Digital · @fabriciokaempf</footer>
+</div>
+
+</html>
