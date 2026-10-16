@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendário do Feed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500&display=swap">
+<style>
+:root{--bg:#150F0B;--panel:#1F1712;--panel2:#261C15;--line:#3A2C21;--fg:#F3E7D3;--body:#D6C9B6;--muted:#968470;--bronze:#CE9E5E;--ok:#8DB07A;
+--display:"Oswald","Arial Narrow",sans-serif;--label:"Barlow Condensed","Arial Narrow",sans-serif;--text:"Barlow",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--body);font:400 1.0625rem/1.6 var(--text)}
+.hero{position:relative;min-height:min(78vh,620px);display:grid;align-items:end;background:#000 url(img/p7-01.jpg) center 45%/cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,15,11,.2) 0%,rgba(21,15,11,.55) 45%,var(--bg) 100%)}
+.hero .in{position:relative;z-index:1;max-width:760px;margin:0 auto;width:100%;padding:0 20px 36px}
+h1,h2{font-family:var(--display);font-weight:600;text-transform:uppercase;color:var(--fg);line-height:1.05;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.4rem,9vw,4rem)} h1 span{color:var(--bronze);display:block}
+h2{font-size:clamp(1.6rem,5vw,2.1rem)}
+.k{font:600 .85rem var(--label);letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);margin:0 0 10px}
+.lead{margin:16px 0 0;max-width:56ch;color:var(--fg);font-size:1.1rem}
+.wrap{max-width:760px;margin:0 auto;padding:8px 20px 64px;display:grid;gap:64px}
+p{margin:0;max-width:62ch}
+b{color:var(--fg)}
+section{display:grid;gap:18px}
+.week{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.day{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:6px}
+.day b{font:600 1.05rem var(--display);text-transform:uppercase}
+.day small{font:500 .9rem var(--label);letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.day.now{border-color:var(--bronze);background:var(--panel2)}
+.tag{justify-self:start;font:600 .78rem var(--label);letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--fg)}
+.tag.on{background:var(--bronze);border-color:var(--bronze);color:var(--bg)}
+.tag.done{border-color:var(--ok);color:var(--ok)}
+.changes{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.changes li{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.changes li::before{content:"";width:9px;height:9px;margin:9px 0 0 6px;background:var(--bronze);transform:rotate(45deg)}
+.post-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.car{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px 10px;margin-inline:-20px}
+.car img{width:min(78%,330px);flex:none;scroll-snap-align:start;border-radius:8px;aspect-ratio:4/5;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.hint{font:500 .9rem var(--label);color:var(--muted);letter-spacing:.05em}
+details{background:var(--panel);border:1px solid var(--line);border-radius:10px}
+summary{cursor:pointer;padding:14px 18px;font:600 .95rem var(--label);letter-spacing:.12em;text-transform:uppercase;color:var(--bronze)}
+.cap{padding:0 18px 18px;white-space:pre-line;font-size:1rem}
+.vid{width:min(100%,340px);aspect-ratio:9/16;border-radius:10px;background:#000;display:block}
+.deal{border-left:3px solid var(--bronze);padding:6px 0 6px 18px;display:grid;gap:10px}
+footer{font:500 .9rem var(--label);color:var(--muted);letter-spacing:.06em;border-top:1px solid var(--line);padding-top:18px}
+@media (max-width:560px){.week{grid-template-columns:1fr}}
+
+.plan{background:var(--panel);border:1px dashed var(--bronze);border-radius:10px;padding:18px 20px;display:grid;gap:12px}
+.plan ol{margin:0;padding-left:1.3em;display:grid;gap:6px}
+.plan li::marker{color:var(--bronze);font-family:var(--display)}
+.need{display:flex;gap:10px;align-items:flex-start;background:#2a1f12;border:1px solid var(--bronze);border-radius:10px;padding:14px 16px}
+.need b{color:var(--bronze)}
+.dl{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.dl li{display:grid;grid-template-columns:9.5rem 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.dl li b{font:600 1rem var(--display);text-transform:uppercase}
+@media (max-width:560px){.dl li{grid-template-columns:1fr;gap:2px}}
+</style>
+
+<header class="hero"><div class="in">
+  <p class="k">Eu Asso pra Ti · calendário · semana de 20 a 24/10</p>
+  <h1>A semana que vem<span>já pronta.</span></h1>
+  <p class="lead">Diego, como a gente combinou: os posts da semana que vem com antecedência, fotos definidas e só corte premium. Olha com calma e me manda os teus pitacos até segunda, num áudio só.</p>
+</div></header>
+
+<div class="wrap">
+
+<section>
+  <p class="k">A semana</p>
+  <div class="week">
+    <div class="day"><small>Terça 20/10 · 21h</small><b>Sal antes ou depois?</b><span class="tag on">Pronto</span></div>
+    <div class="day"><small>Quinta 22/10 · 21h</small><b>Sobremesas no fogo</b><span class="tag">Falta foto</span></div>
+    <div class="day"><small>Sábado 24/10 · 21h</small><b>Antes da tua festa</b><span class="tag on">Pronto</span></div>
+  </div>
+</section>
+
+<section>
+  <p class="k">O que preciso de ti</p>
+  <ul class="dl">
+    <li><b>Até segunda 19/10</b><span>Teus pitacos de texto nos três posts, num áudio só.</span></li>
+    <li><b>Até segunda 19/10</b><span>Subir no Drive (01 Fotos/Pode usar) as fotos de sobremesa que tu me mandou no grupo, incluindo o Martín Fierro.</span></li>
+    <li><b>No post de terça</b><span>Me diz a tua resposta: tu é do time sal antes ou sal depois? Deixei "depende do corte", mas se tu tiver lado, fica mais forte.</span></li>
+  </ul>
+</section>
+
+<section>
+  <div class="post-head"><p class="k" style="margin:0">Terça 20/10 · 21h</p><span class="tag on">Pronto</span></div>
+  <h2>Post 7: sal antes ou sal depois?</h2>
+  <p>A tua ideia: a discussão que nunca acaba na beira da churrasqueira. Um post de conversa, pra galera comentar e o perfil aparecer pra mais gente.</p>
+  <div class="car" aria-label="Imagens do post 7">
+    <img src="img/p7-01.jpg" alt="Capa: Sal antes ou sal depois?" loading="lazy">
+    <img src="img/p7-02.jpg" alt="Time sal antes" loading="lazy">
+    <img src="img/p7-03.jpg" alt="Time sal depois" loading="lazy">
+    <img src="img/p7-04.jpg" alt="E eu? Depende do corte" loading="lazy">
+  </div>
+  <p class="hint">Arrasta para o lado para ver as 4 imagens.</p>
+  <details><summary>Ver a legenda</summary><div class="cap">Sal antes ou sal depois? 🧂🔥
+
+Essa é a discussão que nunca acaba na beira da churrasqueira.
+
+🥩 Time sal antes: sal grosso na carne e direto pra brasa. O jeito raiz.
+🔪 Time sal depois: carne no ponto, fatiada na tábua e o sal por cima. Tem quem diga que é frescura, tem quem não abra mão.
+
+E eu? Depende do corte. Cada um pede o seu jeito, e na tua festa eu te explico tudo na beira do fogo.
+
+Agora me conta aqui nos comentários: tu é do time sal antes ou sal depois? 👇
+
+📸 @francofilms_
+📍 Região Metropolitana, Porto Alegre e Litoral
+
+#churrascograndepoa #churrascopoa #churrasconolitoral #churrascoparaeventos #churrasqueiroadomicilio</div></details>
+</section>
+
+<section>
+  <div class="post-head"><p class="k" style="margin:0">Quinta 22/10 · 21h</p><span class="tag">Falta foto</span></div>
+  <h2>Post 8: sobremesas no fogo</h2>
+  <p>Também ideia tua: um carrossel só de sobremesas, porque é um baita diferencial. Monto assim que as fotos estiverem no Drive.</p>
+  <div class="plan">
+    <p class="k" style="margin:0">Como vai ficar</p>
+    <ol>
+      <li><b>Capa:</b> "E a sobremesa? No fogo, é claro."</li>
+      <li>Abacaxi com canela</li>
+      <li>Banana assada com doce de leite</li>
+      <li>Queijo coalho com doce de leite</li>
+      <li>Martín Fierro</li>
+      <li><b>Fecho:</b> "Pra fechar a festa com gostinho de quero mais", com o WhatsApp</li>
+    </ol>
+  </div>
+  <div class="need"><span><b>Falta:</b> as fotos de sobremesa no Drive até segunda. Se tiver foto de alguma que não está na lista, manda junto que eu encaixo.</span></div>
+</section>
+
+<section>
+  <div class="post-head"><p class="k" style="margin:0">Sábado 24/10 · 21h</p><span class="tag on">Pronto</span></div>
+  <h2>Post 9: antes da tua festa começar</h2>
+  <p>O bastidor premium: os cortes separados pro cardápio, o cronograma, o serviço na mesa. Mostra o cuidado que o cliente não vê.</p>
+  <div class="car" aria-label="Imagens do post 9">
+    <img src="img/p9-01.jpg" alt="Capa: Antes da tua festa começar" loading="lazy">
+    <img src="img/p9-02.jpg" alt="Cada corte separado pra ti" loading="lazy">
+    <img src="img/p9-03.jpg" alt="O cronograma manda" loading="lazy">
+    <img src="img/p9-04.jpg" alt="Servido pra galera" loading="lazy">
+    <img src="img/p9-05.jpg" alt="Me conta a tua" loading="lazy">
+  </div>
+  <p class="hint">Arrasta para o lado para ver as 5 imagens.</p>
+  <details><summary>Ver a legenda</summary><div class="cap">Antes da tua festa começar, já tem muita coisa acontecendo 🔥
+
+🥩 Cada corte separado pro teu cardápio, do jeito que a gente combinou na conversa.
+⏱️ O cronograma manda: a carne vai saindo no ritmo da festa, sem vácuo e sem ninguém ficar esperando.
+🍽️ E na hora de servir, os garçons passando com a tábua pra galera.
+
+Tu só precisa aproveitar a festa com quem tu gosta. O resto é comigo.
+
+Tem festa vindo aí? Me chama no WhatsApp pelo link da bio ou no (51) 99565-7817 e me conta como tu imaginou a tua festa.
+
+📸 @francofilms_
+📍 Região Metropolitana, Porto Alegre e Litoral
+
+#churrascograndepoa #churrascopoa #churrasconolitoral #churrascoparaeventos #churrasqueiroadomicilio</div></details>
+</section>
+
+<section>
+  <p class="k">Também nessa semana</p>
+  <div class="deal">
+    <p><b>Sábado 24/10, meio-dia: evento com focaccia.</b> É o dia de gravar o vídeo de reação da focaccia, com o roteiro que está no Drive (06 Entregas). Os clipes vão pra pasta 02 Vídeos até domingo.</p>
+    <p>Se o fotógrafo da praia mandar o material novo até quarta, eu troco alguma foto pra deixar ainda mais forte e te aviso.</p>
+  </div>
+</section>
+
+<footer>Fabricio Kaempf · Estrategista Digital · @fabriciokaempf</footer>
+</div>
+
+</html>
