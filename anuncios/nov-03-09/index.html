@@ -61,7 +61,7 @@ footer{font-size:13px;color:var(--ink-muted)}
   <div class="kicker">Eu Asso pra Ti · Anúncios da fase 2</div>
   <h1>Primeira semana no ar</h1>
   <p class="lead" id="lead"></p>
-  <div class="meta mono">Período: 3 a 9 de novembro de 2026 · Dados da Meta em 9/11, às 9h08, com o dia ainda em andamento</div>
+  <div class="meta mono">Período: 3 a 9 de novembro de 2026 · Dados da Meta com a semana fechada, atualizados em 10/11</div>
 </header>
 
 <section aria-label="Visão geral" class="grid g4" id="kpis"></section>
@@ -114,8 +114,8 @@ const dias=[
 {d:'05/11',a:{g:33.89,i:1079,c:10,r:8},n:{g:0,i:0,c:0,r:0}},
 {d:'06/11',a:{g:18.42,i:547,c:5,r:2},n:{g:0,i:0,c:0,r:0}},
 {d:'07/11',a:{g:4.66,i:76,c:1,r:0},n:{g:17.65,i:570,c:4,r:1}},
-{d:'08/11',a:{g:0,i:0,c:0,r:0},n:{g:33.53,i:997,c:6,r:1}},
-{d:'09/11',a:{g:0,i:0,c:0,r:0},n:{g:4.52,i:136,c:5,r:1}}];
+{d:'08/11',a:{g:0,i:0,c:0,r:0},n:{g:33.54,i:998,c:6,r:1}},
+{d:'09/11',a:{g:0,i:0,c:0,r:0},n:{g:38.67,i:1097,c:13,r:4}}];
 const anuncios=[
 ['A4 Como funciona',AMPLO,'Pausado',85.26,2536,18],
 ['A1 O fogo pronto',AMPLO,'Pausado',13.94,474,4],
@@ -123,7 +123,7 @@ const anuncios=[
 ['A2 Eu cuido do fogo',AMPLO,'Pausado',1.89,71,0],
 ['A6 Do teu jeito',AMPLO,'Pausado',0.71,27,0],
 ['A3 Focaccia',AMPLO,'Pausado',0.13,3,0],
-['A4 Como funciona',NOVO,'Ativo',48.51,1411,2],
+['A4 Como funciona',NOVO,'Ativo',82.64,2371,5],
 ['A5 Não é só carne',NOVO,'Ativo',7.22,294,1]];
 const PLANO=28*30+31*39+31*50, PLANO_DIA=30;
 const brl=v=>'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -143,8 +143,8 @@ $('kpis').innerHTML=[
 $('diag').textContent=`O custo para aparecer ficou praticamente igual nos dois públicos: ${brl(cpm(A))} por mil impressões no amplo e ${brl(cpm(N))} no novo. A diferença no custo por conversa vem de quantas pessoas clicam e iniciam a conversa. Com ${N.r} conversas no público novo, ainda não há base para conclusão.`;
 const pub=(nome,cl,o,per)=>`<div class="cell"><h3 class="${cl}">${nome}</h3><span class="lab">${per}</span><div class="num">${brl(cpr(o))}</div><div class="ctx">por conversa</div><div class="rows"><span>Investimento</span><b>${brl(o.g)}</b><span>Conversas</span><b>${o.r}</b><span>Impressões</span><b>${int(o.i)}</b><span>Cliques no link</span><b>${o.c}</b><span>Taxa de clique</span><b>${pct(o.c/o.i*100)}</b><span>Conversas por clique</span><b>${pct(o.r/o.c*100)}</b></div></div>`;
 $('pubs').innerHTML=pub(AMPLO,'amplo',A,'3/11 a 7/11')+pub(NOVO,'aa',N,'7/11 a 9/11, em aprendizado');
-const ate=dias.slice(0,6).reduce((s,x)=>s+x.a.g+x.n.g,0),planoAte=6*PLANO_DIA;
-$('pace').textContent=`Até 8/11, foram ${brl(ate)} dos ${brl(planoAte)} planejados para os seis dias (${pct(ate/planoAte*100)}). O dia 9/11 ainda está em andamento.`;
+const ate=dias.reduce((s,x)=>s+x.a.g+x.n.g,0),planoAte=dias.length*PLANO_DIA;
+$('pace').textContent=`Na semana, foram ${brl(ate)} dos ${brl(planoAte)} planejados para os sete dias (${pct(ate/planoAte*100)}).`;
 $('tri').innerHTML=`<b class="mono">${brl(T.g)}</b> de ${brl(PLANO)} previstos (${pct(T.g/PLANO*100)})`;
 $('tribar').style.width=(T.g/PLANO*100)+'%';
 $('ads').innerHTML=anuncios.map(a=>`<tr><td>${a[0]}</td><td>${a[1]}</td><td>${a[2]}</td><td>${brl(a[3])}</td><td>${int(a[4])}</td><td>${a[5]}</td><td>${a[5]?brl(a[3]/a[5]):'sem conversa'}</td></tr>`).join('');
