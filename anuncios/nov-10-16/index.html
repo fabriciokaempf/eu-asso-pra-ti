@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Anúncios Fase 2 | 10 a 16 de novembro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--ground:#EDEEF1;--surface:#FFF;--surface-2:#F6F7F9;--ink:#15161B;--ink-muted:#63656F;--line:#DCDEE4;--ember:#C33A16;--ember-soft:#FAEBE5;--teal:#0E5457}
+@media (prefers-color-scheme:dark){:root{--ground:#111216;--surface:#191B20;--surface-2:#202329;--ink:#EEEFF2;--ink-muted:#9EA1AC;--line:#2C2F37;--ember:#FF7A4D;--ember-soft:#2B1811;--teal:#5CBFC2;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:17px/1.55 "Source Serif 4",Georgia,serif;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 72px}
+.wrap{max-width:980px;margin:0 auto;display:grid;gap:44px;grid-template-columns:minmax(0,1fr)}
+h1,h2,h3{font-family:Archivo,Arial,sans-serif;font-variation-settings:"wdth" 110;margin:0;text-wrap:balance}
+h1{font-size:clamp(30px,6vw,46px);line-height:1.08}
+h2{font-size:21px;margin-bottom:14px}
+h3{font-size:14px;letter-spacing:.02em}
+.mono,.kicker,th,.lab{font-family:"IBM Plex Mono",monospace}
+.kicker{font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ember);margin-bottom:14px}
+.lead{font-size:20px;margin:16px 0 0;max-width:42em}
+.meta{margin-top:14px;font-size:12px;color:var(--ink-muted)}
+.grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cell{background:var(--surface);padding:18px;min-width:0}
+.lab{font-size:11px;color:var(--ink-muted);letter-spacing:.04em;display:block}
+.num{font-family:Archivo,Arial,sans-serif;font-weight:700;font-size:clamp(26px,4.5vw,36px);line-height:1.15;margin-top:6px;font-variant-numeric:tabular-nums}
+.ctx{font-size:14px;color:var(--ink-muted);margin-top:4px}
+.featured{background:var(--ember-soft)}
+.cell p{margin:8px 0 0;font-size:16px}
+.cell ul{margin:8px 0 0;padding-left:18px;font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.chips .lab{width:100%}
+.chip{font:12px "IBM Plex Mono",monospace;border:1px solid var(--line);background:var(--surface);padding:5px 10px}
+.pub h3{font-size:17px}.pub .amplo{color:var(--teal)}.pub .aa{color:var(--ember)}
+.rows{display:grid;grid-template-columns:1fr auto;gap:5px 16px;margin-top:12px;font-size:15px}
+.rows b{font-family:"IBM Plex Mono",monospace;font-weight:500;font-variant-numeric:tabular-nums;text-align:right}
+.note{font-size:15px;color:var(--ink-muted);margin:12px 0 0;max-width:46em}
+.panel{background:var(--surface);border:1px solid var(--line);padding:16px}
+#chart{min-height:260px}
+#chart text{font:11px "IBM Plex Mono",monospace;fill:var(--ink-muted)}
+#chart text.v{fill:var(--ink);font-weight:500}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font:12px "IBM Plex Mono",monospace;color:var(--ink-muted);margin-top:10px}
+.legend i{display:inline-block;width:11px;height:11px;margin-right:6px;vertical-align:-1px}
+.bar{height:12px;background:var(--surface-2);border:1px solid var(--line);margin-top:14px}.bar span{display:block;height:100%;background:var(--ember)}
+.tw{overflow-x:auto;background:var(--surface);border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:15px}
+th{font-size:11px;font-weight:500;color:var(--ink-muted);text-align:right;padding:10px 12px;border-bottom:1px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+th:nth-child(-n+3),td:nth-child(-n+3){text-align:left}
+tr:last-child td{border-bottom:0}
+footer{font-size:13px;color:var(--ink-muted)}
+@media (max-width:760px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g2{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">Eu Asso pra Ti · Anúncios da fase 2</div>
+  <h1>Semana da campanha de seguidores</h1>
+  <p class="lead" id="lead"></p>
+  <div class="meta mono">Período: 10 a 16 de novembro de 2026 · Dados da Meta de 16/11 até as 15h, atualizados na terça, 17/11, com a semana fechada</div>
+</header>
+
+<section aria-label="Visão geral" class="grid g4" id="kpis"></section>
+
+<section>
+  <h2>Análise e ações da semana</h2>
+  <div class="grid g2">
+    <div class="cell"><h3>Diagnóstico</h3><p id="diag"></p></div>
+    <div class="cell featured"><h3>Ação da semana</h3><p>Na segunda, 16/11, entrou no ar a campanha de seguidores qualificados, por fora da campanha de conversas. Ela mostra o post da focaccia para quem decide e contrata eventos de alto padrão: bairros nobres de Porto Alegre e litoral norte, com Xangri-lá no centro, de 30 a 60 anos. A campanha de conversas no WhatsApp segue como está, para preservar o que já aprendeu.</p></div>
+    <div class="cell"><h3>Monitorando</h3><ul><li>Campanha de seguidores: visitas ao perfil, seguidores novos e como o criativo responde nos primeiros dias.</li><li>Qualidade das conversas no WhatsApp: quantas pedem orçamento sem travar no valor.</li><li>Quantos seguidores novos viram conversa.</li></ul></div>
+    <div class="cell"><h3>Próximos passos</h3><ul><li>Terça, 17/11: esta página atualizada, com a semana fechada.</li><li>Quinta, 19/11: olhar juntos as conversas e a primeira avaliação do criativo de seguidores.</li><li>1º/12: anúncios novos e verba de dezembro, numa mudança só.</li></ul></div>
+  </div>
+  <div class="chips"><span class="lab">Gestão contínua</span><span class="chip">Entrega e aprovação</span><span class="chip">Ritmo de verba</span><span class="chip">Como está indo, toda segunda</span><span class="chip">Relatório mensal</span><span class="chip">Mensagem pronta para saber a origem</span></div>
+</section>
+
+<section>
+  <h2>Por campanha</h2>
+  <div class="grid g2 pub" id="pubs"></div>
+  <p class="note">As duas campanhas têm objetivos diferentes. Na de conversas, o que decide é a qualidade de cada conversa. Na de seguidores, o que decide é quantos seguidores qualificados chegam e quantos viram conversa depois.</p>
+</section>
+
+<section>
+  <h2>Investimento diário</h2>
+  <div class="panel">
+    <div id="chart" role="img" aria-label="Investimento por dia de 10 a 16 de novembro, por campanha, com o número de conversas de cada dia e a referência de 30 reais por dia."></div>
+    <div class="legend"><span><i style="background:var(--ember)"></i>Conversas no WhatsApp</span><span><i style="background:var(--teal)"></i>Seguidores</span><span>Linha tracejada: R$ 30/dia planejados</span><span>Número sobre a barra: conversas</span></div>
+  </div>
+  <p class="note" id="pace"></p>
+</section>
+
+<section>
+  <h2>Verba do trimestre</h2>
+  <div class="panel"><span id="tri"></span><div class="bar"><span id="tribar"></span></div></div>
+  <p class="note">Plano: R$ 30/dia em novembro, R$ 39/dia em dezembro e R$ 50/dia em janeiro, até 31/01. Desde 16/11, somam-se R$ 13/dia da campanha de seguidores, combinados com o Diego.</p>
+</section>
+
+<section>
+  <h2>Por anúncio</h2>
+  <div class="tw"><table><thead><tr><th>Anúncio</th><th>Campanha</th><th>Situação</th><th>Investimento</th><th>Impressões</th><th>Resultado</th><th>Custo por resultado</th></tr></thead><tbody id="ads"></tbody></table></div>
+  <p class="note">Conversa é cada início de conversa no WhatsApp contado pela Meta. Quem chega pelo anúncio traz a mensagem pronta, o que permite separar a origem na etiqueta "Anúncio". Na campanha de seguidores, o resultado é a visita ao perfil.</p>
+</section>
+
+<footer>Fabricio Kaempf | Estrategista Digital · @fabriciokaempf</footer>
+</div>
+<script>
+const WA='Conversas no WhatsApp',SEG='Seguidores';
+const dias=[
+{d:'10/11',w:{g:31.90,i:784,c:13,r:1},s:0},
+{d:'11/11',w:{g:29.74,i:732,c:14,r:2},s:0},
+{d:'12/11',w:{g:22.89,i:608,c:12,r:0},s:0},
+{d:'13/11',w:{g:28.13,i:752,c:22,r:3},s:0},
+{d:'14/11',w:{g:24.51,i:573,c:15,r:1},s:0},
+{d:'15/11',w:{g:34.57,i:743,c:12,r:1},s:0},
+{d:'16/11',w:{g:20.61,i:468,c:8,r:1},s:3.62}];
+const SEGM={g:3.62,i:196,c:9,v:7};
+const ANTES=107.25+89.86;
+const anuncios=[
+['A4 Como funciona',WA,'Ativo',181.77,4410,'8 conversas',181.77/8],
+['A5 Não é só carne',WA,'Ativo',10.58,251,'1 conversa',10.58],
+['A focaccia que virou assunto',SEG,'Ativo, em aprendizado',3.62,196,'7 visitas ao perfil',3.62/7]];
+const PLANO=28*30+31*39+31*50, PLANO_DIA=30;
+const brl=v=>'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const int=v=>v.toLocaleString('pt-BR');
+const pct=v=>v.toLocaleString('pt-BR',{maximumFractionDigits:1})+'%';
+const W={g:0,i:0,c:0,r:0};dias.forEach(x=>{for(const f in W)W[f]+=x.w[f]});
+const cpr=W.g/W.r,cpm=W.g/W.i*1000;
+const totalG=W.g+SEGM.g,totalI=W.i+SEGM.i;
+const $=id=>document.getElementById(id);
+$('lead').textContent=`Foram ${brl(W.g)} na campanha de conversas e ${W.r} conversas no WhatsApp de 10 a 16/11. Em 16/11 entrou no ar a campanha de seguidores qualificados, que ainda está começando a aprender.`;
+$('kpis').innerHTML=[
+['Investimento',brl(totalG),`${brl(W.g)} em conversas, ${brl(SEGM.g)} em seguidores`],
+['Conversas',int(W.r),'no WhatsApp, de 10 a 16/11'],
+['Custo por conversa',brl(cpr),'estimativa da proposta: R$ 10 a R$ 25'],
+['Impressões',int(totalI),`custo por mil: ${brl(totalG/totalI*1000)}`]
+].map(k=>`<div class="cell"><span class="lab">${k[0]}</span><div class="num">${k[1]}</div><div class="ctx">${k[2]}</div></div>`).join('');
+$('diag').textContent=`A campanha de conversas segue dentro da estimativa, a ${brl(cpr)} por conversa. Os cliques foram firmes (${pct(W.c/W.i*100)} de quem viu) e o custo para aparecer subiu para ${brl(cpm)} por mil impressões, o movimento normal de novembro. O anúncio A4 concentrou ${pct(181.77/W.g*100)} da verba, e o A5 ainda tem poucos dados para comparar.`;
+const rows=(l)=>`<div class="rows">${l.map(r=>`<span>${r[0]}</span><b>${r[1]}</b>`).join('')}</div>`;
+$('pubs').innerHTML=
+`<div class="cell"><h3 class="aa">Conversas no WhatsApp</h3><span class="lab">10/11 a 16/11</span><div class="num">${brl(cpr)}</div><div class="ctx">por conversa</div>${rows([['Investimento',brl(W.g)],['Conversas',W.r],['Impressões',int(W.i)],['Cliques no link',W.c],['Taxa de clique',pct(W.c/W.i*100)],['Conversas por clique',pct(W.r/W.c*100)]])}</div>`+
+`<div class="cell"><h3 class="amplo">Seguidores qualificados</h3><span class="lab">16/11, primeiras horas, em aprendizado</span><div class="num">${brl(SEGM.g/SEGM.v)}</div><div class="ctx">por visita ao perfil</div>${rows([['Investimento',brl(SEGM.g)],['Visitas ao perfil',SEGM.v],['Impressões',int(SEGM.i)],['Cliques',SEGM.c],['Taxa de clique',pct(SEGM.c/SEGM.i*100)],['Verba diária','R$ 13,00']])}</div>`;
+const ate=W.g,planoAte=dias.length*PLANO_DIA;
+$('pace').textContent=`A campanha de conversas gastou ${brl(ate)} dos ${brl(planoAte)} possíveis nos sete dias (${pct(ate/planoAte*100)}). A Meta distribui o orçamento de cada dia conforme a demanda.`;
+const tot=ANTES+totalG;
+$('tri').innerHTML=`<b class="mono">${brl(tot)}</b> de ${brl(PLANO)} previstos (${pct(tot/PLANO*100)})`;
+$('tribar').style.width=(tot/PLANO*100)+'%';
+$('ads').innerHTML=anuncios.map(a=>`<tr><td>${a[0]}</td><td>${a[1]}</td><td>${a[2]}</td><td>${brl(a[3])}</td><td>${int(a[4])}</td><td>${a[5]}</td><td>${brl(a[6])}</td></tr>`).join('');
+function draw(){
+ const el=$('chart'),Wd=el.clientWidth,H=260,m={t:24,r:8,b:26,l:30},iw=Wd-m.l-m.r,ih=H-m.t-m.b,max=45,y=v=>m.t+ih-v/max*ih,bw=iw/dias.length;
+ let s=`<svg width="${Wd}" height="${H}">`;
+ [0,15,30,45].forEach(v=>{s+=`<line x1="${m.l}" x2="${Wd-m.r}" y1="${y(v)}" y2="${y(v)}" style="stroke:${v==PLANO_DIA?'var(--ink-muted)':'var(--line)'}" ${v==PLANO_DIA?'stroke-dasharray="5 4"':''}/><text x="${m.l-6}" y="${y(v)+4}" text-anchor="end">${v}</text>`});
+ dias.forEach((x,i)=>{const w=Math.min(bw*.62,48),cx=m.l+bw*i+bw/2,x0=cx-w/2;
+  s+=`<rect x="${x0}" y="${y(x.w.g)}" width="${w}" height="${y(0)-y(x.w.g)}" style="fill:var(--ember)"/>`;
+  s+=`<rect x="${x0}" y="${y(x.w.g+x.s)}" width="${w}" height="${y(0)-y(x.s)}" style="fill:var(--teal)"/>`;
+  s+=`<text class="v" x="${cx}" y="${y(x.w.g+x.s)-6}" text-anchor="middle">${x.w.r}</text>`;
+  s+=`<text x="${cx}" y="${H-8}" text-anchor="middle">${Wd<420?x.d.slice(0,2):x.d}</text>`});
+ el.innerHTML=s+'</svg>';
+}
+draw();addEventListener('resize',draw);
+</script>
+</body>
+</html>
