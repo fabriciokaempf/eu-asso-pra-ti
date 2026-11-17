@@ -61,7 +61,7 @@ footer{font-size:13px;color:var(--ink-muted)}
   <div class="kicker">Eu Asso pra Ti · Anúncios da fase 2</div>
   <h1>Semana da campanha de seguidores</h1>
   <p class="lead" id="lead"></p>
-  <div class="meta mono">Período: 10 a 16 de novembro de 2026 · Dados da Meta de 16/11 até as 16h, atualizados na terça, 17/11, com a semana fechada</div>
+  <div class="meta mono">Período: 10 a 16 de novembro de 2026 · Semana fechada, dados da Meta atualizados na terça, 17/11</div>
 </header>
 
 <section aria-label="Visão geral" class="grid g4" id="kpis"></section>
@@ -95,6 +95,7 @@ footer{font-size:13px;color:var(--ink-muted)}
 <section>
   <h2>Verba do trimestre</h2>
   <div class="panel"><span id="tri"></span><div class="bar"><span id="tribar"></span></div></div>
+  <p class="note">Seguidores: em 16/11 o perfil foi repostado pelo Estribo (393 mil seguidores). Os seguidores que chegaram por esse repost são orgânicos e não entram na conta do anúncio. Aqui aparecem só os 8 seguidores que a Meta atribui a quem viu o anúncio da focaccia.</p>
   <p class="note">Plano: R$ 30/dia em novembro, R$ 39/dia em dezembro e R$ 50/dia em janeiro, até 31/01. Desde 16/11, somam-se R$ 13/dia da campanha de seguidores, combinados com o Diego.</p>
 </section>
 
@@ -115,8 +116,8 @@ const dias=[
 {d:'13/11',w:{g:28.13,i:752,c:22,r:3},s:0},
 {d:'14/11',w:{g:24.51,i:573,c:15,r:1},s:0},
 {d:'15/11',w:{g:34.57,i:743,c:12,r:1},s:0},
-{d:'16/11',w:{g:21.07,i:478,c:8,r:1},s:3.83}];
-const SEGM={g:3.83,i:201,c:9,v:7};
+{d:'16/11',w:{g:38.61,i:924,c:7,r:3},s:10.08}];
+const SEGM={g:10.08,i:496,c:16,v:15,f:8};
 const ANTES=107.25+89.86;
 const anuncios=[
 ['A4 Como funciona',WA,'Ativo',182.23,4419,'8 conversas',182.23/8],
@@ -141,7 +142,7 @@ $('diag').textContent=`A campanha de conversas segue dentro da estimativa, a ${b
 const rows=(l)=>`<div class="rows">${l.map(r=>`<span>${r[0]}</span><b>${r[1]}</b>`).join('')}</div>`;
 $('pubs').innerHTML=
 `<div class="cell"><h3 class="aa">Conversas no WhatsApp</h3><span class="lab">10/11 a 16/11</span><div class="num">${brl(cpr)}</div><div class="ctx">por conversa</div>${rows([['Investimento',brl(W.g)],['Conversas',W.r],['Impressões',int(W.i)],['Cliques no link',W.c],['Taxa de clique',pct(W.c/W.i*100)],['Conversas por clique',pct(W.r/W.c*100)]])}</div>`+
-`<div class="cell"><h3 class="amplo">Seguidores qualificados</h3><span class="lab">16/11, primeiras horas, em aprendizado</span><div class="num">${brl(SEGM.g/SEGM.v)}</div><div class="ctx">por visita ao perfil</div>${rows([['Investimento',brl(SEGM.g)],['Visitas ao perfil',SEGM.v],['Impressões',int(SEGM.i)],['Cliques',SEGM.c],['Taxa de clique',pct(SEGM.c/SEGM.i*100)],['Verba diária','R$ 13,00']])}</div>`;
+`<div class="cell"><h3 class="amplo">Seguidores qualificados</h3><span class="lab">16/11, primeiro dia, em aprendizado</span><div class="num">${brl(SEGM.g/SEGM.v)}</div><div class="ctx">por visita ao perfil</div>${rows([['Investimento',brl(SEGM.g)],['Visitas ao perfil',SEGM.v],['Impressões',int(SEGM.i)],['Cliques',SEGM.c],['Taxa de clique',pct(SEGM.c/SEGM.i*100)],['Seguidores vindos do anúncio',SEGM.f],['Verba diária','R$ 13,00']])}</div>`;
 const ate=W.g,planoAte=dias.length*PLANO_DIA;
 $('pace').textContent=`A campanha de conversas gastou ${brl(ate)} dos ${brl(planoAte)} possíveis nos sete dias (${pct(ate/planoAte*100)}). A Meta distribui o orçamento de cada dia conforme a demanda.`;
 const tot=ANTES+totalG;

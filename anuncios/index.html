@@ -62,7 +62,7 @@ a.sem{display:block;background:var(--surface);border:1px solid var(--line);paddi
   <div class="kicker">Eu Asso pra Ti · Anúncios da fase 2</div>
   <h1>Painel da fase 2</h1>
   <p class="lead" id="lead"></p>
-  <div class="meta mono">Período: 3 a 16 de novembro de 2026 · Dados da Meta de 16/11 até as 16h · Atualizado toda semana, no mesmo link</div>
+  <div class="meta mono">Período: 3 a 16 de novembro de 2026 · Dados da Meta com 16/11 fechado · Atualizado toda semana, no mesmo link</div>
 </header>
 
 <section aria-label="Visão geral" class="grid g4" id="kpis"></section>
@@ -96,6 +96,7 @@ a.sem{display:block;background:var(--surface);border:1px solid var(--line);paddi
 <section>
   <h2>Verba do trimestre</h2>
   <div class="panel"><span id="tri"></span><div class="bar"><span id="tribar"></span></div></div>
+  <p class="note">Seguidores: em 16/11 o perfil foi repostado pelo Estribo (393 mil seguidores). Os seguidores que chegaram por esse repost são orgânicos e não entram na conta do anúncio. Aqui aparecem só os 8 seguidores que a Meta atribui a quem viu o anúncio da focaccia.</p>
   <p class="note">Plano: R$ 30/dia em novembro, R$ 39/dia em dezembro e R$ 50/dia em janeiro, até 31/01. Desde 16/11, somam-se R$ 13/dia da campanha de seguidores, combinados com o Diego.</p>
 </section>
 
@@ -133,8 +134,8 @@ const dias=[
 {d:'13/11',am:z,aa:{g:28.13,i:752,c:22,r:3},sg:0},
 {d:'14/11',am:z,aa:{g:24.51,i:573,c:15,r:1},sg:0},
 {d:'15/11',am:z,aa:{g:34.57,i:743,c:12,r:1},sg:0},
-{d:'16/11',am:z,aa:{g:21.07,i:478,c:8,r:1},sg:3.83}];
-const SEGM={g:3.83,i:201,c:9,v:7};
+{d:'16/11',am:z,aa:{g:38.61,i:924,c:7,r:3},sg:10.08}];
+const SEGM={g:10.08,i:496,c:16,v:15,f:8};
 const anuncios=[
 ['A4 Como funciona',AA,'Ativo',264.87,6790,'13 conversas',264.87/13],
 ['A5 Não é só carne',AA,'Ativo',17.80,545,'2 conversas',17.80/2],
@@ -168,7 +169,7 @@ const acao=(n,tit,cl,per,o)=>`<div class="cell"><h3 class="${cl}">${n} · ${tit}
 $('acoes').innerHTML=
 acao('Ação 1','Público amplo','amplo','3/11 a 7/11, pausado',AMt)+
 acao('Ação 2','Bairros nobres','aa','desde 7/11, ativo',AAt)+
-`<div class="cell"><h3 class="gold">Ação 3 · Seguidores</h3><span class="lab">desde 16/11, em aprendizado</span><div class="num">${brl(SEGM.g/SEGM.v)}</div><div class="ctx">por visita ao perfil</div>${rows([['Investimento',brl(SEGM.g)],['Visitas ao perfil',SEGM.v],['Impressões',int(SEGM.i)],['Cliques',SEGM.c],['Taxa de clique',pct(SEGM.c/SEGM.i*100)]])}</div>`;
+`<div class="cell"><h3 class="gold">Ação 3 · Seguidores</h3><span class="lab">desde 16/11, em aprendizado</span><div class="num">${brl(SEGM.g/SEGM.v)}</div><div class="ctx">por visita ao perfil</div>${rows([['Investimento',brl(SEGM.g)],['Visitas ao perfil',SEGM.v],['Impressões',int(SEGM.i)],['Cliques',SEGM.c],['Seguidores vindos do anúncio',SEGM.f]])}</div>`;
 const gasto=dias.reduce((s,x)=>s+x.am.g+x.aa.g,0),planoAte=dias.length*PLANO_DIA;
 $('pace').textContent=`Nos 14 dias, as campanhas de conversas gastaram ${brl(gasto)} dos ${brl(planoAte)} planejados (${pct(gasto/planoAte*100)}). A Meta distribui o orçamento de cada dia conforme a demanda.`;
 $('tri').innerHTML=`<b class="mono">${brl(totalG)}</b> de ${brl(PLANO)} previstos (${pct(totalG/PLANO*100)})`;
