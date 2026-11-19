@@ -62,7 +62,7 @@ a.sem{display:block;background:var(--surface);border:1px solid var(--line);paddi
   <div class="kicker">Eu Asso pra Ti · Anúncios da fase 2</div>
   <h1>Painel da fase 2</h1>
   <p class="lead" id="lead"></p>
-  <div class="meta mono">Período: 3 a 16 de novembro de 2026 · Dados da Meta com 16/11 fechado · Atualizado toda semana, no mesmo link</div>
+  <div class="meta mono">Período: 3 a 18 de novembro de 2026 · Dados da Meta com 18/11 fechado · O dia 19/11 entra na próxima atualização</div>
 </header>
 
 <section aria-label="Visão geral" class="grid g4" id="kpis"></section>
@@ -73,7 +73,7 @@ a.sem{display:block;background:var(--surface);border:1px solid var(--line);paddi
     <div class="cell"><h3>Diagnóstico</h3><p id="diag"></p></div>
     <div class="cell featured"><h3>Ação mais recente</h3><p>Em 16/11 entrou no ar a campanha de seguidores qualificados, por fora da campanha de conversas, com R$ 13 por dia. Ela mostra o post da focaccia para quem decide e contrata eventos de alto padrão: bairros nobres de Porto Alegre e litoral norte, com Xangri-lá no centro, de 30 a 60 anos. A campanha de conversas segue como está, para preservar o que já aprendeu.</p></div>
     <div class="cell"><h3>Monitorando</h3><ul><li>Campanha de conversas: quantas conversas pedem orçamento sem travar no valor.</li><li>Campanha de seguidores: visitas ao perfil, seguidores novos e como o criativo responde.</li><li>Quantos seguidores novos viram conversa no WhatsApp.</li></ul></div>
-    <div class="cell"><h3>Próximos passos</h3><ul><li>Quinta, 19/11: primeira avaliação do criativo da campanha de seguidores.</li><li>1º/12: anúncios novos e verba de dezembro, numa mudança só.</li><li>1º/12: conversa de retorno para quem já interagiu com o perfil.</li></ul></div>
+    <div class="cell"><h3>Próximos passos</h3><ul><li>Todos os dias: leitura da campanha de seguidores. O criativo segue sem mudanças enquanto a Meta aprende.</li><li>1º/12: anúncios novos e verba de dezembro, numa mudança só.</li><li>1º/12: conversa de retorno para quem já interagiu com o perfil.</li></ul></div>
   </div>
   <div class="chips"><span class="lab">Gestão contínua</span><span class="chip">Entrega e aprovação</span><span class="chip">Ritmo de verba</span><span class="chip">Como está indo, toda segunda</span><span class="chip">Relatório mensal</span><span class="chip">Mensagem pronta para saber a origem</span></div>
 </section>
@@ -134,12 +134,14 @@ const dias=[
 {d:'13/11',am:z,aa:{g:28.13,i:752,c:22,r:3},sg:0},
 {d:'14/11',am:z,aa:{g:24.51,i:573,c:15,r:1},sg:0},
 {d:'15/11',am:z,aa:{g:34.57,i:743,c:12,r:1},sg:0},
-{d:'16/11',am:z,aa:{g:38.61,i:924,c:7,r:3},sg:10.08}];
-const SEGM={g:10.08,i:496,c:16,v:15,f:8};
+{d:'16/11',am:z,aa:{g:38.61,i:924,c:7,r:3},sg:10.08},
+{d:'17/11',am:z,aa:{g:38.31,i:859,c:8,r:2},sg:10.14},
+{d:'18/11',am:z,aa:{g:31.78,i:668,c:3,r:3},sg:13.25}];
+const SEGM={g:33.47,i:1289,c:58,v:51,f:20};
 const anuncios=[
-['A4 Como funciona',AA,'Ativo',264.87,6790,'13 conversas',264.87/13],
-['A5 Não é só carne',AA,'Ativo',17.80,545,'2 conversas',17.80/2],
-['A focaccia que virou assunto',SG,'Ativo, em aprendizado',3.83,201,'7 visitas ao perfil',3.83/7],
+['A4 Como funciona',AA,'Ativo',AAt.g-17.92,AAt.i-548,(AAt.r-2)+' conversas',(AAt.g-17.92)/(AAt.r-2)],
+['A5 Não é só carne',AA,'Ativo',17.92,548,'2 conversas',17.92/2],
+['A focaccia que virou assunto',SG,'Ativo, em aprendizado',SEGM.g,SEGM.i,SEGM.v+' visitas ao perfil',SEGM.g/SEGM.v],
 ['A4 Como funciona',AM,'Pausado',85.26,2536,'18 conversas',85.26/18],
 ['A1 O fogo pronto',AM,'Pausado',13.94,474,'4 conversas',13.94/4],
 ['A5 Não é só carne',AM,'Pausado',5.32,88,'sem conversa',null],
@@ -156,7 +158,7 @@ const WA={g:AMt.g+AAt.g,i:AMt.i+AAt.i,c:AMt.c+AAt.c,r:AMt.r+AAt.r};
 const totalG=WA.g+SEGM.g,totalI=WA.i+SEGM.i;
 const cpr=o=>o.g/o.r,cpm=o=>o.g/o.i*1000;
 const $=id=>document.getElementById(id);
-$('lead').textContent=`Em 14 dias, ${brl(totalG)} investidos e ${WA.r} conversas no WhatsApp. Três ações até agora: o público amplo, a virada para os bairros nobres e a campanha de seguidores qualificados, que entrou no ar em 16/11.`;
+$('lead').textContent=`Em ${dias.length} dias, ${brl(totalG)} investidos e ${WA.r} conversas no WhatsApp. Três ações até agora: o público amplo, a virada para os bairros nobres e a campanha de seguidores qualificados, que entrou no ar em 16/11 e já soma ${SEGM.f} seguidores novos vindos do anúncio.`;
 $('kpis').innerHTML=[
 ['Investimento',brl(totalG),`${brl(WA.g)} em conversas, ${brl(SEGM.g)} em seguidores`],
 ['Conversas',int(WA.r),`${AMt.r} no público amplo, ${AAt.r} nos bairros nobres`],
@@ -169,9 +171,9 @@ const acao=(n,tit,cl,per,o)=>`<div class="cell"><h3 class="${cl}">${n} · ${tit}
 $('acoes').innerHTML=
 acao('Ação 1','Público amplo','amplo','3/11 a 7/11, pausado',AMt)+
 acao('Ação 2','Bairros nobres','aa','desde 7/11, ativo',AAt)+
-`<div class="cell"><h3 class="gold">Ação 3 · Seguidores</h3><span class="lab">desde 16/11, em aprendizado</span><div class="num">${brl(SEGM.g/SEGM.v)}</div><div class="ctx">por visita ao perfil</div>${rows([['Investimento',brl(SEGM.g)],['Visitas ao perfil',SEGM.v],['Impressões',int(SEGM.i)],['Cliques',SEGM.c],['Seguidores vindos do anúncio',SEGM.f]])}</div>`;
+`<div class="cell"><h3 class="gold">Ação 3 · Seguidores</h3><span class="lab">desde 16/11, em aprendizado</span><div class="num">${brl(SEGM.g/SEGM.v)}</div><div class="ctx">por visita ao perfil</div>${rows([['Investimento',brl(SEGM.g)],['Visitas ao perfil',SEGM.v],['Impressões',int(SEGM.i)],['Cliques',SEGM.c],['Seguidores vindos do anúncio',SEGM.f],['Custo por seguidor',brl(SEGM.g/SEGM.f)]])}</div>`;
 const gasto=dias.reduce((s,x)=>s+x.am.g+x.aa.g,0),planoAte=dias.length*PLANO_DIA;
-$('pace').textContent=`Nos 14 dias, as campanhas de conversas gastaram ${brl(gasto)} dos ${brl(planoAte)} planejados (${pct(gasto/planoAte*100)}). A Meta distribui o orçamento de cada dia conforme a demanda.`;
+$('pace').textContent=`Nos ${dias.length} dias, as campanhas de conversas gastaram ${brl(gasto)} dos ${brl(planoAte)} planejados (${pct(gasto/planoAte*100)}). A Meta distribui o orçamento de cada dia conforme a demanda.`;
 $('tri').innerHTML=`<b class="mono">${brl(totalG)}</b> de ${brl(PLANO)} previstos (${pct(totalG/PLANO*100)})`;
 $('tribar').style.width=(totalG/PLANO*100)+'%';
 $('ads').innerHTML=anuncios.map(a=>`<tr><td>${a[0]}</td><td>${a[1]}</td><td>${a[2]}</td><td>${brl(a[3])}</td><td>${int(a[4])}</td><td>${a[5]}</td><td>${a[6]?brl(a[6]):'sem conversa'}</td></tr>`).join('');
