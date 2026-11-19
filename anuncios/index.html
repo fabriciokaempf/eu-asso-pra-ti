@@ -96,7 +96,7 @@ a.sem{display:block;background:var(--surface);border:1px solid var(--line);paddi
 <section>
   <h2>Verba do trimestre</h2>
   <div class="panel"><span id="tri"></span><div class="bar"><span id="tribar"></span></div></div>
-  <p class="note">Seguidores: em 16/11 o perfil foi repostado pelo Estribo (393 mil seguidores). Os seguidores que chegaram por esse repost são orgânicos e não entram na conta do anúncio. Aqui aparecem só os 8 seguidores que a Meta atribui a quem viu o anúncio da focaccia.</p>
+  <p class="note">Seguidores: em 16/11 o perfil foi repostado pelo Estribo (393 mil seguidores). Os seguidores que chegaram por esse repost são orgânicos e não entram na conta do anúncio. Aqui aparecem só os seguidores que a Meta atribui a quem viu o anúncio da focaccia.</p>
   <p class="note">Plano: R$ 30/dia em novembro, R$ 39/dia em dezembro e R$ 50/dia em janeiro, até 31/01. Desde 16/11, somam-se R$ 13/dia da campanha de seguidores, combinados com o Diego.</p>
 </section>
 
@@ -138,7 +138,7 @@ const dias=[
 {d:'17/11',am:z,aa:{g:38.31,i:859,c:8,r:2},sg:10.14},
 {d:'18/11',am:z,aa:{g:31.78,i:668,c:3,r:3},sg:13.25}];
 const SEGM={g:33.47,i:1289,c:58,v:51,f:20};
-const anuncios=[
+const anuncios=()=>[
 ['A4 Como funciona',AA,'Ativo',AAt.g-17.92,AAt.i-548,(AAt.r-2)+' conversas',(AAt.g-17.92)/(AAt.r-2)],
 ['A5 Não é só carne',AA,'Ativo',17.92,548,'2 conversas',17.92/2],
 ['A focaccia que virou assunto',SG,'Ativo, em aprendizado',SEGM.g,SEGM.i,SEGM.v+' visitas ao perfil',SEGM.g/SEGM.v],
@@ -176,7 +176,7 @@ const gasto=dias.reduce((s,x)=>s+x.am.g+x.aa.g,0),planoAte=dias.length*PLANO_DIA
 $('pace').textContent=`Nos ${dias.length} dias, as campanhas de conversas gastaram ${brl(gasto)} dos ${brl(planoAte)} planejados (${pct(gasto/planoAte*100)}). A Meta distribui o orçamento de cada dia conforme a demanda.`;
 $('tri').innerHTML=`<b class="mono">${brl(totalG)}</b> de ${brl(PLANO)} previstos (${pct(totalG/PLANO*100)})`;
 $('tribar').style.width=(totalG/PLANO*100)+'%';
-$('ads').innerHTML=anuncios.map(a=>`<tr><td>${a[0]}</td><td>${a[1]}</td><td>${a[2]}</td><td>${brl(a[3])}</td><td>${int(a[4])}</td><td>${a[5]}</td><td>${a[6]?brl(a[6]):'sem conversa'}</td></tr>`).join('');
+$("ads").innerHTML=anuncios().map(a=>`<tr><td>${a[0]}</td><td>${a[1]}</td><td>${a[2]}</td><td>${brl(a[3])}</td><td>${int(a[4])}</td><td>${a[5]}</td><td>${a[6]?brl(a[6]):'sem conversa'}</td></tr>`).join('');
 function draw(){
  const el=$('chart'),Wd=el.clientWidth,H=260,m={t:24,r:8,b:26,l:30},iw=Wd-m.l-m.r,ih=H-m.t-m.b,max=45,y=v=>m.t+ih-v/max*ih,bw=iw/dias.length;
  let s=`<svg width="${Wd}" height="${H}">`;
