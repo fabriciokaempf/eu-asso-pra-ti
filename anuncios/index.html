@@ -65,6 +65,9 @@ a.sem{display:block;background:var(--surface);border:1px solid var(--line);paddi
   <div class="meta mono">Período: 3 a 22 de novembro de 2026 · Dados da Meta com 22/11 fechado · O dia 23/11 entra na próxima atualização</div>
 </header>
 
+<h2 style="margin-bottom:8px">Conversas por semana</h2>
+<section aria-label="Conversas por semana" class="grid g4" id="semanas"></section>
+<p class="note" id="semnota"></p>
 <section aria-label="Visão geral" class="grid g4" id="kpis"></section>
 
 <section>
@@ -163,6 +166,10 @@ const totalG=WA.g+SEGM.g,totalI=WA.i+SEGM.i;
 const cpr=o=>o.g/o.r,cpm=o=>o.g/o.i*1000;
 const $=id=>document.getElementById(id);
 $('lead').textContent=`Em ${dias.length} dias, ${brl(totalG)} investidos e ${WA.r} conversas no WhatsApp. Três ações até agora: o público amplo, a virada para os bairros nobres e a campanha de seguidores qualificados, que entrou no ar em 16/11 e já soma ${SEGM.f} seguidores novos vindos do anúncio.`;
+const sem=[];for(let k=0;k<dias.length;k+=7){const b=dias.slice(k,k+7);const r=b.reduce((t,x)=>t+x.am.r+x.aa.r,0);sem.push({de:b[0].d.slice(0,5),ate:b[b.length-1].d.slice(0,5),n:b.length,r});}
+const fx=d=>d.replace(/^0/,'');
+$('semanas').innerHTML=sem.map((w,k)=>`<div class="cell${k===sem.length-1?' featured':''}"><span class="lab">${fx(w.de)} a ${fx(w.ate)}${w.n<7?' (em andamento)':''}</span><div class="num">${w.r}</div><div class="ctx">conversas · ${(w.r/w.n).toFixed(1).replace('.',',')} por dia${k===0?' · público amplo até 7/11':''}</div></div>`).join('');
+$('semnota').textContent='A primeira semana teve o público amplo, com mais volume e contatos menos qualificados. Desde 7/11 os anúncios falam só com bairros nobres: menos conversas, mais perto do cliente que contrata evento premium. Em dezembro a agenda está quase cheia, então os próximos anúncios vão puxar as datas de início de semana e já abrir janeiro.';
 $('kpis').innerHTML=[
 ['Investimento',brl(totalG),`${brl(WA.g)} em conversas, ${brl(SEGM.g)} em seguidores`],
 ['Conversas',int(WA.r),`${AMt.r} no público amplo, ${AAt.r} nos bairros nobres`],
