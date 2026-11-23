@@ -62,7 +62,7 @@ a.sem{display:block;background:var(--surface);border:1px solid var(--line);paddi
   <div class="kicker">Eu Asso pra Ti · Anúncios da fase 2</div>
   <h1>Painel da fase 2</h1>
   <p class="lead" id="lead"></p>
-  <div class="meta mono">Período: 3 a 18 de novembro de 2026 · Dados da Meta com 18/11 fechado · O dia 19/11 entra na próxima atualização</div>
+  <div class="meta mono">Período: 3 a 22 de novembro de 2026 · Dados da Meta com 22/11 fechado · O dia 23/11 entra na próxima atualização</div>
 </header>
 
 <section aria-label="Visão geral" class="grid g4" id="kpis"></section>
@@ -71,7 +71,7 @@ a.sem{display:block;background:var(--surface);border:1px solid var(--line);paddi
   <h2>Análise e ações</h2>
   <div class="grid g2">
     <div class="cell"><h3>Diagnóstico</h3><p id="diag"></p></div>
-    <div class="cell featured"><h3>Ação mais recente</h3><p>Em 16/11 entrou no ar a campanha de seguidores qualificados, por fora da campanha de conversas, com R$ 13 por dia. Ela mostra o post da focaccia para quem decide e contrata eventos de alto padrão: bairros nobres de Porto Alegre e litoral norte, com Xangri-lá no centro, de 30 a 60 anos. A campanha de conversas segue como está, para preservar o que já aprendeu. Na primeira leitura, com dados até 18/11, o anúncio trouxe 51 visitas ao perfil e 20 seguidores, a R$ 1,67 cada. O criativo segue sem mudanças, para não reiniciar o aprendizado.</p></div>
+    <div class="cell featured"><h3>Ação mais recente</h3><p>Em 16/11 entrou no ar a campanha de seguidores qualificados, por fora da campanha de conversas, com R$ 13 por dia. Ela mostra o post da focaccia para quem decide e contrata eventos de alto padrão: bairros nobres de Porto Alegre e litoral norte, com Xangri-lá no centro, de 30 a 60 anos. A campanha de conversas segue como está, para preservar o que já aprendeu. Com dados até 22/11, o anúncio já trouxe 135 visitas ao perfil e 53 seguidores, a R$ 1,72 cada, com ritmo estável dia a dia. O criativo segue sem mudanças, para não reiniciar o aprendizado.</p></div>
     <div class="cell"><h3>Monitorando</h3><ul><li>Campanha de conversas: quantos pedidos esbarram em data já ocupada, hoje o principal motivo de não fechar.</li><li>Campanha de seguidores: visitas ao perfil, seguidores novos e como o criativo responde.</li><li>Quantos seguidores novos viram conversa no WhatsApp.</li></ul></div>
     <div class="cell"><h3>Próximos passos</h3><ul><li>Todos os dias: leitura da campanha de seguidores. O criativo segue sem mudanças enquanto a Meta aprende.</li><li>1º/12: anúncios novos e verba de dezembro, numa mudança só.</li><li>1º/12: conversa de retorno para quem já interagiu com o perfil.</li></ul></div>
   </div>
@@ -136,11 +136,15 @@ const dias=[
 {d:'15/11',am:z,aa:{g:34.57,i:743,c:3,r:1},sg:0},
 {d:'16/11',am:z,aa:{g:38.61,i:924,c:7,r:3},sg:10.08},
 {d:'17/11',am:z,aa:{g:38.31,i:859,c:8,r:2},sg:10.14},
-{d:'18/11',am:z,aa:{g:31.78,i:668,c:3,r:3},sg:13.25}];
-const SEGM={g:33.47,i:1289,c:58,v:51,f:20};
+{d:'18/11',am:z,aa:{g:31.78,i:668,c:3,r:3},sg:13.25},
+{d:'19/11',am:z,aa:{g:20.98,i:511,c:2,r:1},sg:12.62},
+{d:'20/11',am:z,aa:{g:21.84,i:417,c:1,r:2},sg:16.00},
+{d:'21/11',am:z,aa:{g:23.88,i:560,c:7,r:3},sg:12.68},
+{d:'22/11',am:z,aa:{g:36.27,i:871,c:8,r:0},sg:16.21}];
+const SEGM={g:90.98,i:3501,c:147,v:135,f:53};
 const anuncios=()=>[
-['A4 Como funciona',AA,'Ativo',352.48,8762,'20 conversas',352.48/20],
-['A5 Não é só carne',AA,'Ativo',17.82,547,'2 conversas',17.82/2],
+['A4 Como funciona',AA,'Ativo',402.59,9853,'23 conversas',402.59/23],
+['A5 Não é só carne',AA,'Ativo',70.68,1815,'5 conversas',70.68/5],
 ['A focaccia que virou assunto',SG,'Ativo, em aprendizado',SEGM.g,SEGM.i,SEGM.v+' visitas ao perfil',SEGM.g/SEGM.v],
 ['A4 Como funciona',AM,'Pausado',85.26,2536,'18 conversas',85.26/18],
 ['A1 O fogo pronto',AM,'Pausado',13.94,474,'4 conversas',13.94/4],
